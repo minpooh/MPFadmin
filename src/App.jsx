@@ -19,7 +19,7 @@ function App() {
   const RenderContent = PAGES[activeMenu] || Dashboard;
 
   return (
-    <main className="flex h-screen bg-gray">
+    <main className="flex h-screen bg-gray-50">
       <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
       <div className="flex-1 flex flex-col ml-72">
         <Header/>
