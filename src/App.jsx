@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
@@ -7,24 +7,19 @@ import Review from './components/Review'
 import Notice from './components/Notice'
 import Faq from './components/Faq'
 
-const PAGES = {
-  Dashboard: Dashboard,
-  Review: Review,
-  Notice: Notice,
-  Faq: Faq,
-};
-
 function App() {
-  const [activeMenu, setActiveMenu] = useState('Dashboard');
-  const RenderContent = PAGES[activeMenu] || Dashboard;
-
   return (
     <main className="flex h-screen bg-gray-50">
-      <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
+      <Sidebar/>
       <div className="flex-1 flex flex-col ml-72">
         <Header/>
         <div className="p-6">
-          <RenderContent/>
+          <Routes>
+            <Route path="/" element={<Dashboard/>}/>
+            <Route path="/review" element={<Review/>}/>
+            <Route path="/notice" element={<Notice/>}/>
+            <Route path="/faq" element={<Faq/>}/>
+          </Routes>
         </div>
       </div>
     </main>
